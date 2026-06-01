@@ -11,7 +11,7 @@ GPT_CONFIG_124M = {
     "n_heads": 12,
     "n_layers": 12,
     "drop_rate": 0.1,   #2 It’s possible and common to set dropout to 0.
-    "qkv_bais": False
+    "qkv_bias": False
 }
 
 
@@ -476,3 +476,5 @@ optimizer = torch.optim.AdamW(model.parameters(), lr=5e-4, weight_decay=0.1)
 optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
 model.train();
 # %%
+
+

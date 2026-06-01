@@ -5,7 +5,7 @@ GPT_CONFIG_124M = {
     "n_heads": 12,              # number of attention heads
     "n_layers": 12,             # number of layers
     "drop_rate": 0.1,           # Dropout rate
-    "qkv_bais": False           # Query-Key-Value bais
+    "qkv_bias": False           # Query-Key-Value bais
 }
 GPT_CONFIG_MEDIUM = {
     "vocab_size": 50257,
@@ -14,7 +14,7 @@ GPT_CONFIG_MEDIUM = {
     "n_heads": 16,              # number of attention heads
     "n_layers": 24,             # number of layers
     "drop_rate": 0.1,           # Dropout rate
-    "qkv_bais": False           # Query-Key-Value bais
+    "qkv_bias": False           # Query-Key-Value bais
 
 }
 
@@ -25,7 +25,7 @@ GPT_CONFIG_LARGE = {
     "n_heads": 20,              # number of attention heads
     "n_layers": 36,             # number of layers
     "drop_rate": 0.1,           # Dropout rate
-    "qkv_bais": False           # Query-Key-Value bais
+    "qkv_bias": False           # Query-Key-Value bais
 
 }
 
@@ -36,7 +36,7 @@ GPT_CONFIG_XL = {
     "n_heads": 25,              # number of attention heads
     "n_layers": 48,             # number of layers
     "drop_rate": 0.1,           # Dropout rate
-    "qkv_bais": False           # Query-Key-Value bais
+    "qkv_bias": False           # Query-Key-Value bais
 
 }
 
@@ -270,7 +270,7 @@ class TransformerBlock(nn.Module):
             context_length=cfg["context_length"],
             num_heads=cfg["n_heads"],
             dropout=cfg["drop_rate"],
-            qkv_bais=cfg["qkv_bais"])
+            qkv_bias=cfg["qkv_bias"])
         self.ff = FeedForward(cfg)
         self.norm1 = LayerNorm(cfg["emb_dim"])
         self.norm2 = LayerNorm(cfg["emb_dim"])

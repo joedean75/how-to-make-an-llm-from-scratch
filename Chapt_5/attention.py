@@ -315,16 +315,16 @@ d_in, d_out = 3, 1
 
 
 class MultiHeadAttention(nn.Module):
-    def __init__(self, d_in, d_out, context_length, dropout, num_heads, qkv_bais=False):
+    def __init__(self, d_in, d_out, context_length, dropout, num_heads, qkv_bias=False):
         super().__init__()
         assert (d_out % num_heads == 0),  "d_out must be divisible by num_heads"
 
         self.d_out = d_out
         self.num_heads = num_heads
         self.head_dim = d_out // num_heads          #1 Reduces the projection dim to match the desired output dim
-        self.W_query = nn.Linear(d_in, d_out, bias=qkv_bais)
-        self.W_key = nn.Linear(d_in, d_out, bias=qkv_bais)
-        self.W_value = nn.Linear(d_in, d_out, bias=qkv_bais)
+        self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias)
+        self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias)
+        self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.out_proj = nn.Linear(d_out, d_out)         #2  Uses a Linear layer to combine head outputs
         self.dropout = nn.Dropout(dropout)
         self.register_buffer(
